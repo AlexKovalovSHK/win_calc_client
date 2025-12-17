@@ -1,0 +1,7 @@
+services:
+  backend:
+    image: win_calc_client:latest
+    container_name: win_calc_client
+    ports:
+      - "3008:3008"
+    command: "nginx -g 'daemon off;'"
