@@ -1,5 +1,6 @@
 // projectService.ts
 
+import { my_randomUUID } from "../../utils/my_random";
 import { Project } from "../types";
 
 const STORAGE_KEY = 'wincalc_projects';
@@ -21,7 +22,7 @@ export const saveProjects = (projects: Project[]) => {
 
 export const createNewProject = (name: string): Project => {
   return {
-    id: crypto.randomUUID(), // Или Date.now().toString(), если старый браузер
+    id: my_randomUUID(), // Или Date.now().toString(), если старый браузер
     name: name,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),

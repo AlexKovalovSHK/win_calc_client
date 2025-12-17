@@ -68,23 +68,26 @@ export default function ProjectList({ onSelectProject }: Props) {
       </Paper>
 
       {/* Список */}
-      <Grid container spacing={2}>
+      <div className='w-100 mb-2'>
         {projects.length === 0 && (
           <Typography sx={{ p: 3, color: 'text.secondary' }}>Нет проектов. Создайте первый!</Typography>
         )}
         
         {projects.map((project) => (
-          <div className='' key={project.id}>
-            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
-              <Typography variant="h6">{project.name}</Typography>
+          <div className='w-100 mb-2' key={project.id}>
+            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: '100%' }} className=''>
+                <div className='d-flex justify-content-between align-items-center'>
+  <div>
+ <Typography variant="h6">{project.name}</Typography>
               <Typography variant="caption" color="text.secondary">
                 Создан: {new Date(project.createdAt).toLocaleDateString()}
               </Typography>
               <Typography variant="body2" sx={{ mt: 1, mb: 2 }}>
                 Комнат: {project.rooms.length}
               </Typography>
-              
-              <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+                </div>
+
+                <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
                 <Button 
                   size="small" 
                   variant="outlined" 
@@ -100,10 +103,15 @@ export default function ProjectList({ onSelectProject }: Props) {
                   <DeleteIcon />
                 </IconButton>
               </Box>
+                </div>
+              
+             
+              
+             
             </Paper>
           </div>
         ))}
-      </Grid>
+      </div>
     </Box>
   );
 }

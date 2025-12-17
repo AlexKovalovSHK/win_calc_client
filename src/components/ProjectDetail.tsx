@@ -22,6 +22,7 @@ import { updateProjectInStorage } from '../features/project/projectService';
 import { PROFILES } from '../db/profiles'; 
 import { GLAZING_LIST } from '../db/doubleGlazingList'; 
 import { calculateFullStats } from '../utils/utils'; // <-- Важно: используем новую функцию
+import { my_randomUUID } from '../utils/my_random';
 
 interface Props {
   project: Project;
@@ -53,7 +54,7 @@ export default function ProjectDetail({ project: initialProject, onBack }: Props
     if (roomArea <= 0) return alert("Площадь должна быть > 0");
 
     const newRoom: Room = {
-      id: crypto.randomUUID(),
+      id: my_randomUUID(),
       name: roomName,
       area: roomArea,
       height: roomHeight,
@@ -91,7 +92,7 @@ export default function ProjectDetail({ project: initialProject, onBack }: Props
 
     // 2. Формируем объект окна
     const newWindow: CalculatedWindow = {
-      id: crypto.randomUUID(),
+      id: my_randomUUID(),
       width: winWidth,
       height: winHeight,
       
@@ -179,7 +180,7 @@ export default function ProjectDetail({ project: initialProject, onBack }: Props
             value={roomName} onChange={e => setRoomName(e.target.value)} 
           />
           <TextField 
-            label="Площадь (м²)" type="number" size="small" sx={{ width: 100 }}
+            label="Площадь (м²)" type="number" size="small" sx={{ width: 150 }}
             value={roomArea || ''} onChange={e => setRoomArea(+e.target.value)} 
           />
           <TextField 

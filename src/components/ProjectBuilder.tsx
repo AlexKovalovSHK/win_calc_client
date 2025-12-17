@@ -18,6 +18,7 @@ import { updateProjectInStorage } from '../features/project/projectService';
 import { PROFILES } from '../db/profiles';
 import { GLAZING_LIST } from '../db/doubleGlazingList';
 import { calculateFullStats } from '../utils/utils';
+import { my_randomUUID } from '../utils/my_random';
 
 interface Props {
   project: Project;
@@ -50,7 +51,7 @@ export default function ProjectDetail({ project: initialProject, onBack }: Props
     if (!newRoomName.trim()) return alert("Введите название комнаты");
     
     const newRoom: Room = {
-      id: crypto.randomUUID(), // Используем UUID вместо Date.now()
+      id: my_randomUUID(), // Используем UUID вместо Date.now()
       name: newRoomName,
       area: newRoomArea,     // Новое поле
       height: newRoomHeight, // Новое поле
@@ -93,7 +94,7 @@ export default function ProjectDetail({ project: initialProject, onBack }: Props
 
     // 2. Создаем объект окна со ВСЕМИ данными (цена, субсидии, экономия)
     const newWindow: CalculatedWindow = {
-      id: crypto.randomUUID(),
+      id: my_randomUUID(),
       width: winWidth,
       height: winHeight,
       profileId: profile.id,

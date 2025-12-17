@@ -18,6 +18,7 @@ import { calculateFullStats } from '../utils/utils';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { InvoiceDocument } from './PdfDocument';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { my_randomUUID } from '../utils/my_random';
 
 
 // Тип для элемента в списке
@@ -60,7 +61,7 @@ export default function SimpleCalculator() {
 
       // 2. Создаем объект строки
       const newItem: CartItem = {
-        id: crypto.randomUUID(), // Уникальный ключ
+        id: my_randomUUID(), // Уникальный ключ
         width,
         height,
         quantity,
